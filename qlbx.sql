@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 02, 2023 lúc 03:03 AM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Thời gian đã tạo: Th1 24, 2024 lúc 02:36 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,9 +37,9 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`idbanner`, `anh`) VALUES
-(1, 'đọ.jpg'),
-(2, 'đọ1.jpg'),
-(3, 'đọ 2.jpg');
+(1, '600_xiaomi-12-pro-xtmobile.webp'),
+(2, '642246378.jpeg'),
+(3, '1349547788.jpeg');
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,8 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `email`, `name`, `subject`, `message`, `status`) VALUES
 (15, 'bon123@gmail.com', 'BON', 'HELLO', 'HELLO', 1),
-(16, 'admin01@gmail.com', 'anhkhoa3103', 'xin chào ', 'xin chào', 1);
+(16, 'admin01@gmail.com', 'anhkhoa3103', 'xin chào ', 'xin chào', 1),
+(17, 'xikhum223@gmail.com', 'Măng cụt', 'hhh', 'hhh', 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +145,13 @@ INSERT INTO `hoadon` (`idhoadon`, `idUser`, `idSP`, `tongtien`, `trangthai`, `so
 (18, 6, 3, 150, 1, 1, '2021-01-11'),
 (21, 10, 5, 1998, 1, 2, '2023-09-13'),
 (23, 18, 4, 869, 1, 1, '2023-10-02'),
-(24, 16, 4, 1738, 1, 2, '2023-10-02');
+(24, 16, 4, 1738, 1, 2, '2023-10-02'),
+(25, 19, 5, 999, 1, 1, '2024-01-12'),
+(26, 19, 5, 1998, 1, 2, '2024-01-12'),
+(27, 19, 135, 22, 1, 1, '2024-01-15'),
+(29, 19, 135, 22, 1, 1, '2024-01-17'),
+(30, 19, 168, 7000, 1, 1, '2024-01-17'),
+(31, 20, 168, 14000, 1, 2, '2024-01-17');
 
 -- --------------------------------------------------------
 
@@ -165,11 +172,7 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`idKM`, `loaiKM`, `giatriKM`, `ngaybatdau`, `ngayketthuc`) VALUES
-(1, 'Không', 0, '0000-00-00', '0000-00-00'),
-(2, 'Sản phẩm mới', 30, '0000-00-00', '0000-00-00'),
-(3, 'Khuyến mãi đầu năm', 30, '0000-00-00', '0000-00-00'),
-(4, 'Khuyến mãi cuối năm', 30, '0000-00-00', '0000-00-00'),
-(5, 'Khuyến', 30, '0000-00-00', '0000-00-00');
+(6, 'Sản phẩm mới', 10, '2024-01-13', '2024-03-31');
 
 -- --------------------------------------------------------
 
@@ -193,7 +196,7 @@ CREATE TABLE `layout` (
 --
 
 INSERT INTO `layout` (`id`, `time`, `mail_1`, `mail_2`, `diachi`, `donvi`, `phone_1`, `phone_2`) VALUES
-(1, '24/7', '19it4@gmail.com', 'vku@vku.udn.vn', 'Làng Đại học, Đà Nẵng', 'Khoa Công Nghệ Thông Tin & Truyền Thông - Đại Học Đà Nẵng VKU', 787700624, 123456789);
+(1, '24/7', '4anhtai@gmail.com', 'tttk@vku.udn.vn', '99 Tô Hiến Thành, Đà Nẵng', 'Khoa Công Nghệ Thông Tin- Cao đẳng nghề Đà Nẵng', 787700624, 123456789);
 
 -- --------------------------------------------------------
 
@@ -212,10 +215,10 @@ CREATE TABLE `loaisanpham` (
 --
 
 INSERT INTO `loaisanpham` (`idLoaiSP`, `tenLSP`, `hinhanh`) VALUES
-(1, 'Xe', 'wave-50cc-don-nhe-di-hoc-30-1476676123-58044a1be250e.jpg'),
-(2, 'Xe Số ', 'Xefun.vn-_-Dream-đỏ-siêu-keng.jpg'),
-(3, 'Xe Ga', 'xe-vario-150-do-kieng-dep-voi-2-phuoc-giam-xoc-matris-cuc-chat-sieu-dang-cap-02.jpg'),
-(4, 'Xe PKL', 'anh-pkl.jpg');
+(1, 'iphone', '11.webp'),
+(2, 'Samsung', '12.webp'),
+(3, 'xiaomi', '14.jpg'),
+(4, 'Oppo', '13.webp');
 
 -- --------------------------------------------------------
 
@@ -265,14 +268,51 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`idSP`, `idKM`, `idLoaiSP`, `idcolor`, `idsize`, `tenSP`, `Dongia`, `anh1`, `anh2`, `anh3`, `ngaynhap`, `mota`, `soluong`) VALUES
-(1, 1, 1, 1, 1, 'XE MÁY SYM ANGELA 50CC SƠN MỜ', 835, '2.jpg', '2.1.jpg', '2.2.jpg', '2020-12-15', '', 9),
-(2, 1, 3, 1, 1, 'VARIO 150', 999, '5.jpg', '5.1.jpg', '5.2.jpg', '2020-12-16', '<p><strong>Vario 150 mới&nbsp;</strong>với&nbsp;thiết kế mạnh mẽ đến từ đ&agrave;n anh lớn CBR250RR mang phong c&aacute;ch&nbsp;thể thao, hầm hố, hiện đại hơn như những mẫu xe tương lai với m&agrave;u sắc kh&aacute; nổi bật.&nbsp;Tổng thể thiết kế&nbsp;<s', 46),
-(3, 1, 3, 1, 1, 'Xe máy Honda Air Blade 160', 986, '', '', '', '2020-12-15', '', 48),
-(4, 1, 2, 1, 1, 'Honda WINNER X Bạc Đen Xanh - Đặc Biệt', 869, '4.jpg', '4.1.jpg', '4.2.jpg', '2020-12-15', '<ul><li><p>Khối lượng bản th&acirc;n</p><p>122kg</p></li><li>&nbsp;</li><li><p>D&agrave;i x Rộng x Cao</p><p>2.019 x 727 x 1.104 mm</p></li><li>&nbsp;</li><li><p>Khoảng c&aacute;ch trục b&aacute;nh xe</p><p>1.278 mm</p></li><li>&nbsp;</li><li><p>Độ cao y&', 42),
-(5, 1, 2, 1, 1, 'XE YAMAHA EXCITER 150 2023', 999, '3.jpg', '3.1.jpg', '3.2.jpg', '2020-12-09', '<p>Về thiết kế, Exciter 150 lu&ocirc;n được nhớ đến với một diện mạo v&ocirc; c&ugrave;ng ấn tượng, mang phong c&aacute;ch thể thao mạnh mẽ. Mẫu xe được đ&aacute;nh gi&aacute; cao nhờ sở hữu vẻ ngo&agrave;i mạnh mẽ v&agrave; nam t&iacute;nh, kết hợp c&ugr', 7),
-(6, 1, 4, 1, 1, 'MULTISTRADA V4 PIKES PEAK', 999, '8.jpg', '8.1.jpg', '8.2.jpg', '2020-12-23', '<p><strong>Ducati Multistrada V4 Pikes Peak |&nbsp;<a href=\"https://giaxe.2banh.vn/ducati/multistrada-v4-pikes-peak.html\">Gi&aacute; xe Multistrada V4 Pikes Peak</a>&nbsp;| Xe moto Pkl Ducati Multistrada V4 Pikes Peak | Gi&aacute; xe Multistrada V4 Pikes ', 50),
-(7, 1, 3, 1, 1, 'XE MÁY 50CC SIRIUS RC', 990, '', '', '', '2020-12-15', '', 5),
-(8, 1, 4, 1, 1, 'Z1000', 999, '7.jpg', '7.1.jpg', '7.2.jpg', '2020-12-15', '<p>Gi&aacute;</p><p>Chi Ph&iacute;</p><p><a href=\"https://www.autofun.vn/xe-may-tra-gop/xe-kawasaki-z1000\">Trả G&oacute;p</a></p><p>Th&ocirc;ng số kỹ thuật quan trọng</p><p>Thương hiệu</p><p>D&ograve;ng xe</p><p>C&ocirc;ng suất tối đa(PS)</p><p>Năm sản xu', 49);
+(122, 6, 1, 2, 1, 'iphone 6 32gb gold', 7, 'iphone-6-32gb-gold.jpg', 'iphone-6-32gb-gold.jpg', 'iphone-6-32gb-gold.jpg', '2024-01-13', '', 100),
+(123, 6, 1, 2, 1, 'iphone 7 256gb gold', 9, 'iphone-7-256gb.jpg', 'iphone-7-256gb.jpg', 'iphone-7-256gb.jpg', '2024-01-13', '', 100),
+(124, 6, 1, 3, 1, 'iphone 8 64gb ', 10, 'iphone-8-64gb.jpg', 'iphone-8-64gb.jpg', 'iphone-8-64gb.jpg', '2024-01-13', '', 100),
+(125, 6, 1, 8, 1, 'iphone x 64gb', 12, 'iphone-x-64gb.jpg', 'iphone-x-64gb.jpg', 'iphone-x-64gb.jpg', '2024-01-13', '', 100),
+(126, 6, 1, 2, 1, 'iphone xs max', 14, 'iphone-xs-max-gold.jpg', 'iphone-xs-max-gold.jpg', 'iphone-xs-max-gold.jpg', '2024-01-13', '', 100),
+(127, 6, 1, 9, 1, 'iphone 11', 16, 'iphone-11.webp', 'iphone-11.webp', 'iphone-11.webp', '2024-01-13', '', 100),
+(128, 6, 1, 5, 1, 'iphone 12 mini', 16, 'iphone-12-mini.webp', 'iphone-12-mini.webp', 'iphone-12-mini.webp', '2024-01-13', '', 100),
+(129, 6, 1, 9, 1, 'iphone 13', 18, 'iphone-13_2_.webp', 'iphone-13_2_.webp', 'iphone-13_2_.webp', '2024-01-13', '', 100),
+(130, 6, 1, 3, 1, 'iphone 14 128gb', 20, 'iphone-14-128gb.webp', 'iphone-14-128gb.webp', 'iphone-14-128gb.webp', '2024-01-13', '', 100),
+(131, 6, 1, 8, 1, 'Iphone 4 - 8Gb', 2, 'apple-iphone-4-.jpg', 'apple-iphone-4-.jpg', 'apple-iphone-4-.jpg', '2024-01-13', '', 100),
+(132, 6, 2, 5, 1, 'Samsung galaxy a15', 5, 'dien-thoai_samsung-galaxy-a15-1.webp', 'dien-thoai_samsung-galaxy-a15-1.webp', 'dien-thoai_samsung-galaxy-a15-1.webp', '2024-01-13', '', 100),
+(133, 6, 2, 3, 1, 'Samsung galaxy a25', 7, 'a25.jpeg', 'a25.jpeg', 'a25.jpeg', '2024-01-13', '', 100),
+(134, 6, 2, 5, 1, 'Samsung galaxy s23 fe', 16, 'samsung-galaxy-s23-fe-gia-re-4.jpg', 'samsung-galaxy-s23-fe-gia-re-4.jpg', 'samsung-galaxy-s23-fe-gia-re-4.jpg', '2024-01-13', '', 100),
+(135, 6, 2, 1, 1, 'Samsung z fold', 22, 'sm-f926_zfold.webp', 'sm-f926_zfold.webp', 'sm-f926_zfold.webp', '2024-01-13', '', 98),
+(136, 6, 2, 2, 1, 'Samsung galaxy z flip 3', 25, '600_samsung_galaxy_z_flip_3_kem.webp', '600_samsung_galaxy_z_flip_3_kem.webp', '600_samsung_galaxy_z_flip_3_kem.webp', '2024-01-13', '', 100),
+(138, 6, 2, 8, 1, 'Samsung galaxy m54', 6, 'm54.jpg', 'm54.jpg', 'm54.jpg', '2024-01-13', '', 100),
+(140, 6, 2, 4, 1, 'Samsung galaxy a34', 4, 'samsung-galaxy-a34-5g-bac.jpg', 'samsung-galaxy-a34-5g-bac.jpg', 'samsung-galaxy-a34-5g-bac.jpg', '2024-01-13', '', 100),
+(141, 6, 3, 5, 1, 'redmi note 12 128gb', 6, '1685420951742_xiaomi_redmi_note_12_128gb_.webp', '1685420951742_xiaomi_redmi_note_12_128gb_.webp', '1685420951742_xiaomi_redmi_note_12_128gb_.webp', '2024-01-13', '', 100),
+(142, 6, 3, 3, 1, 'xiaomi 13 lite', 10, 'thumb-xiaomi-13-lite.png', 'thumb-xiaomi-13-lite.png', 'thumb-xiaomi-13-lite.png', '2024-01-13', '', 100),
+(143, 6, 3, 3, 1, 'xiaomi 13 pro', 22, 'ava-13pro-black.webp', 'ava-13pro-black.webp', 'ava-13pro-black.webp', '2024-01-13', '', 100),
+(144, 6, 3, 5, 1, 'xiaomi mi14', 25, 'xiaomi14.jpg', 'xiaomi14.jpg', 'xiaomi14.jpg', '2024-01-13', '', 100),
+(145, 6, 3, 5, 1, 'xiaomi mi11', 14, 'mi11.jpg', 'mi11.jpg', 'mi11.jpg', '2024-01-13', '', 100),
+(146, 6, 3, 3, 1, 'xiaomi 12 ultra', 17, 'n-thoai-xiaomi-12sultra.webp', 'n-thoai-xiaomi-12sultra.webp', 'n-thoai-xiaomi-12sultra.webp', '2024-01-13', '', 100),
+(147, 6, 3, 5, 1, 'xiaomi 13c', 4, '13c.webp', '13c.webp', '13c.webp', '2024-01-13', '', 100),
+(148, 6, 3, 8, 1, 'xiaomi mi 10s', 10, 'xiaomi-mi-10s.webp', 'xiaomi-mi-10s.webp', 'xiaomi-mi-10s.webp', '2024-01-13', '', 100),
+(149, 6, 3, 2, 1, 'xiaomi mi 11 lite 5g', 9, 'CGG_Xiaomi_Mi_11_Lite_5G.jpg', 'CGG_Xiaomi_Mi_11_Lite_5G.jpg', 'CGG_Xiaomi_Mi_11_Lite_5G.jpg', '2024-01-13', '', 100),
+(150, 6, 3, 3, 1, 'xiaomi k60 ultra', 8, 'xiaomi-redmi-k60-ultra-den.jpg.webp', 'xiaomi-redmi-k60-ultra-den.jpg.webp', 'xiaomi-redmi-k60-ultra-den.jpg.webp', '2024-01-13', '', 100),
+(151, 6, 3, 4, 1, 'xiaomi 12', 10, 'xiaomi-12-xam_.webp', 'xiaomi-12-xam_.webp', 'xiaomi-12-xam_.webp', '2024-01-13', '', 100),
+(152, 6, 3, 5, 1, 'redmi a1', 2, '10053969-dien-thoai-xiaomi-redmi-a1-2gb-32gb-xanh-duong-1.jpg', '10053969-dien-thoai-xiaomi-redmi-a1-2gb-32gb-xanh-duong-1.jpg', '10053969-dien-thoai-xiaomi-redmi-a1-2gb-32gb-xanh-duong-1.jpg', '2024-01-13', '', 100),
+(153, 6, 4, 8, 1, 'oppo reno 11f', 8, 'dien-thoai-oppo-reno-11-f.webp', 'dien-thoai-oppo-reno-11-f.webp', 'dien-thoai-oppo-reno-11-f.webp', '2024-01-13', '', 100),
+(154, 6, 4, 2, 1, 'oppo a38', 6, 'dien_thoai_oppo_a38_f4e594288b564da3b3b720aaf6b82d64_master.webp', 'dien_thoai_oppo_a38_f4e594288b564da3b3b720aaf6b82d64_master.webp', 'dien_thoai_oppo_a38_f4e594288b564da3b3b720aaf6b82d64_master.webp', '2024-01-13', '', 100),
+(155, 6, 4, 2, 1, 'oppo a57', 7, 'ava-a57-gold.webp', 'ava-a57-gold.webp', 'ava-a57-gold.webp', '2024-01-13', '', 100),
+(156, 6, 4, 5, 1, 'oppo reno 10', 9, 'oppo-reno101.jpg', 'oppo-reno101.jpg', 'oppo-reno101.jpg', '2024-01-13', '', 100),
+(157, 6, 4, 5, 1, 'oppo  a18', 4, '1698932384897_oppo_a18_blue_didongviet_1.webp', '1698932384897_oppo_a18_blue_didongviet_1.webp', '1698932384897_oppo_a18_blue_didongviet_1.webp', '2024-01-13', '', 100),
+(158, 6, 4, 3, 1, 'oppo reno 8pro', 9, 'oppo-reno-8-pro-den_85fa7693a6384ce484a945b982cedf23_grande.webp', 'oppo-reno-8-pro-den_85fa7693a6384ce484a945b982cedf23_grande.webp', 'oppo-reno-8-pro-den_85fa7693a6384ce484a945b982cedf23_grande.webp', '2024-01-13', '', 100),
+(159, 6, 4, 2, 1, 'oppo fine n3 fold', 20, 'oppo-find-n3-fold-_cd80917cb9224ef08c03f88edb37eb7a_grande.jpg', 'oppo-find-n3-fold-_cd80917cb9224ef08c03f88edb37eb7a_grande.jpg', 'oppo-find-n3-fold-_cd80917cb9224ef08c03f88edb37eb7a_grande.jpg', '2024-01-13', '', 100),
+(160, 6, 4, 5, 1, 'oppo reno 11pro', 18, 'oppo-reno11-pro-xanh.jpg.webp', 'oppo-reno11-pro-xanh.jpg.webp', 'oppo-reno11-pro-xanh.jpg.webp', '2024-01-13', '', 100),
+(161, 6, 4, 4, 1, 'oppo reno 10 pro', 16, 'oppo-reno10-pro_4_.webp', 'oppo-reno10-pro_4_.webp', 'oppo-reno10-pro_4_.webp', '2024-01-13', '', 100),
+(162, 6, 4, 3, 1, 'oppo a98', 8, 'oppo-a98-4g-600x600.jpg', 'oppo-a98-4g-600x600.jpg', 'oppo-a98-4g-600x600.jpg', '2024-01-13', '', 100),
+(163, 6, 4, 3, 1, 'oppo reno 8t', 9, 'reno8t.jpg', 'reno8t.jpg', 'reno8t.jpg', '2024-01-13', '', 100),
+(164, 6, 4, 3, 1, 'oppo a79', 7, 'a79.webp', 'a79.webp', 'a79.webp', '2024-01-13', '', 100),
+(165, 6, 4, 5, 1, 'oppo a78 256gb', 7, 'oppo-a78-256gb_main_965_1020.png.webp', 'oppo-a78-256gb_main_965_1020.png.webp', 'oppo-a78-256gb_main_965_1020.png.webp', '2024-01-13', '', 100),
+(166, 6, 4, 7, 1, 'oppo a77s', 11, 'oppo-a77s-8gb-128gb-cty-xtmobile.png', 'oppo-a77s-8gb-128gb-cty-xtmobile.png', 'oppo-a77s-8gb-128gb-cty-xtmobile.png', '2024-01-13', '', 100),
+(167, 6, 4, 3, 1, 'oppo a17', 5, 'a17.webp', 'a17.webp', 'a17.webp', '2024-01-13', '', 100),
+(168, 6, 1, 1, 1, 'Iphone 4 - 8Gb', 7000, 'apple-iphone-4-.jpg', 'apple-iphone-4-.jpg', 'apple-iphone-4-.jpg', '2024-01-13', '', 97);
 
 -- --------------------------------------------------------
 
@@ -336,7 +376,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idUser`, `ho`, `ten`, `email`, `diachi`, `gioitinh`, `sodienthoai`, `tendangnhap`, `matkhau`, `idQuyen`) VALUES
-(2, 'abc', 'abc', 'abc@gmail.com', 'đà nẵng', 'nam', '091208934734', 'abc', '827ccb0eea8a706c4c34a16891f84e7b', 0),
+(2, 'abc', 'abc', 'abc@gmail.com', 'đà nẵng', 'nam', '091208934734', 'abc', '827ccb0eea8a706c4c34a16891f84e7b', 2),
 (3, 'bán', 'hàng', 'banhang@gmail.com', 'đà nẵng', 'nam', '091208934734', 'banhang', '827ccb0eea8a706c4c34a16891f84e7b', 2),
 (4, 'Mai', 'Nhựt', 'mvnhut@gmail.com', 'quảng nam', 'nam', '0987765442', 'mainhut', '827ccb0eea8a706c4c34a16891f84e7b', 0),
 (5, 'đào', 'nguyên', 'dvnguyen@gmail.com', 'daklak', 'nam', '0987765442', 'daonguyen', '827ccb0eea8a706c4c34a16891f84e7b', 0),
@@ -349,7 +389,10 @@ INSERT INTO `user` (`idUser`, `ho`, `ten`, `email`, `diachi`, `gioitinh`, `sodie
 (15, 'thy', 'huỳnh', 'thy@gmail.com', 'mẹ nhu', 'nam', '0909004753', 'thy', '5c159a4a', 0),
 (16, 'Lan', 'huỳnh', 'thykhoacomputerdanang@gmail.com', 'mẹ nhu', 'nam', '0909004753', 'khoapro', '350506d2ac20028458c2a7efb1580646', 2),
 (17, 'Lan', 'Điệp', 'duongnguyen3412@gmail.com', 'mẹ nhu', 'nam', '0909004753', 'admin1', '36b3a25e38ed06a8ab2f2cca0e21b873', 1),
-(18, 'Huynh', 'Điệp', 'bon@gmail.com', 'mẹ nhu', 'nam', '0909004753', 'bon', '0192023a7bbd73250516f069df18b500', 0);
+(18, 'Huynh', 'Điệp', 'bon@gmail.com', 'mẹ nhu', 'nam', '0909004753', 'bon', '0192023a7bbd73250516f069df18b500', 0),
+(19, 'le', 'thuận', 'leducthuan112003@gmail.com', 'dn', 'nam', '0702553103', 'thuan', '81dc9bdb52d04dc20036dbd8313ed055', 2),
+(20, 'ha', 'hien', 'xikhum223@gmail.com', 'dn', 'nam', '11111111', 'mn', '827ccb0eea8a706c4c34a16891f84e7b', 0),
+(21, 'nguyen', 'thuan', 'leducthuan112003@gmail.com', 'qn', 'nam', '11111111', 'haha', '4a7d1ed414474e4033ac29ccb8653d9b', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -454,7 +497,7 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `gopy`
@@ -466,13 +509,13 @@ ALTER TABLE `gopy`
 -- AUTO_INCREMENT cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `idhoadon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idhoadon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT cho bảng `khuyenmai`
 --
 ALTER TABLE `khuyenmai`
-  MODIFY `idKM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idKM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `layout`
@@ -496,7 +539,7 @@ ALTER TABLE `phanquyen`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `idSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `idSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT cho bảng `size`
@@ -508,7 +551,7 @@ ALTER TABLE `size`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
